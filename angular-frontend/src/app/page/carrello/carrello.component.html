@@ -9,7 +9,7 @@
                     <span>€{{ item.price * item.quantity}}</span>
                 </li>
             </ul>
-            <button class="btn btn-success btn-block" [routerLink]="['/cart']">Pay</button>
+            <button class="btn btn-success btn-block" (click)="pay()">Pay</button>
       
         </div>
     </div>

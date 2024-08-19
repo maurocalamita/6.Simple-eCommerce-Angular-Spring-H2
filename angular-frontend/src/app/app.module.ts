@@ -12,10 +12,12 @@ import { ProductListComponent } from './page/product-list/product.list.component
 import { CarrelloComponent } from './page/carrello/carrello.component';
 import { OrderService } from './service/order.service';
 import { OrderComponent } from './page/order/order.component';
+import { OrderProductService } from './service/order.product.service';
+import { AddProductToOrderComponent } from './page/order-product/order.product.component';
 
 @NgModule({
   declarations: [
-    AppComponent,ErrorComponent,ProductListComponent,CarrelloComponent,OrderComponent
+    AppComponent,ErrorComponent,ProductListComponent,CarrelloComponent,OrderComponent,AddProductToOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,7 @@ import { OrderComponent } from './page/order/order.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [ProductService,OrderService],
+  providers: [ProductService,OrderService,OrderProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,6 +11,7 @@ import com.ecommerce.service.OrderService;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200") 
 @RequestMapping("/api/orders")
 public class OrderController {
 

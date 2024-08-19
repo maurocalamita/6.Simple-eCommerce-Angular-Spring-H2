@@ -12,14 +12,12 @@ export class OrderService {
     constructor(private http: HttpClient) { }
 
 
-    addOrder(order:Order): Observable<Order> {
+    addOrder(order:any): Observable<any> {
         const headers = { 'content-type': 'application/json'}  
         const body=JSON.stringify(order);
         //console.log(body)
-        return this.http.post<Order>(this.baseURL + '/create', body,{'headers':headers})
+        return this.http.post<any>(this.baseURL + '/create', body,{'headers':headers})
         
       }
-
-    
 
         }
