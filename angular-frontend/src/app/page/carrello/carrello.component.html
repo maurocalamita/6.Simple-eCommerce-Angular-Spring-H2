@@ -10,7 +10,13 @@
                 </li>
             </ul>
             <button class="btn btn-success btn-block" (click)="pay()">Pay</button>
+            
       
+        </div>
+
+       <div *ngIf="feedback.feedbackType === 'success'" class="alert alert-success d-flex align-items-center"
+          role="alert">
+          <span>{{ feedback.feedbackmsg }}</span>
         </div>
     </div>
 </div>

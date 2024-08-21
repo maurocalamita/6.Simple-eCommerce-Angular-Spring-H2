@@ -12,12 +12,17 @@ export class OrderProductService {
     constructor(private http: HttpClient) { }
 
 
-    addProductToOrder(orderProduct: OrderProduct): Observable<string> {
+    addProductToOrder(orderProduct: OrderProduct, params: HttpParams): Observable<string> {
         const url = `${this.baseURL}/${orderProduct.orderId}/products/${orderProduct.productId}`;
-        const params = new HttpParams().set('quantity', orderProduct.quantity.toString());
+       //const params = new HttpParams().set('quantity', orderProduct.quantity.toString());
         
         return this.http.post<string>(url, {}, { params });
       }
+
+      getAllOrdersProducts(): Observable<any> {
+        return this.http.get<any>(this.baseURL + '/order-products' ) ;
+           
+        }
 
     
 

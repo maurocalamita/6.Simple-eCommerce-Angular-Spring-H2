@@ -1,8 +1,24 @@
-
-<h2>ORDINE CONFERMATO</h2>
-<p>
-    Order ID: {{ orderProduct.orderId }}, 
-    Product ID: {{ orderProduct.productId }}, 
-    Quantity: {{ orderProduct.quantity }}
-  </p>
-  
+<div class="container mt-5">
+  <h1 class="text-center mb-4">ORDINE CONFERMATO</h1>
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Order ID</th>
+        <th scope="col">Date Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Qui puoi inserire le righe dinamicamente con Angular o JS -->
+      <tr *ngFor="let item of cart; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ item.productName }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.orderId }}</td>
+        <td>{{ item.dateCreated }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

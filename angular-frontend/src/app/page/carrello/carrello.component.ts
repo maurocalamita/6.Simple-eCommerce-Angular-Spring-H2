@@ -27,7 +27,7 @@ export class CarrelloComponent {
   quantityForm: FormGroup;
   cart: [] = [];
   total:string;
-  orderProduct: OrderProduct = {productId:null, orderId:null, quantity:null};
+  orderProduct: OrderProduct = {productId:null, orderId:null};
 
   
 
@@ -47,7 +47,6 @@ export class CarrelloComponent {
         this.router.navigate(['']);
         return;
     }
-
     this.total = localStorage.getItem('total');
     if(!this.total) {
         alert("Something went wrong!");
@@ -69,8 +68,15 @@ export class CarrelloComponent {
     this.orderService.addOrder(orderStatus).subscribe({
       next: (data: any) => { 
         if (data.length !== 0) {
-          console.log(data);
-         this.pay1(data.id);
+          this.pay1(data.id);
+          this.feedback = {
+            feedbackType: "success",
+            feedbackmsg: "Payment successfull",
+          };
+          setTimeout(() => {
+            this.feedback = { feedbackType: "success", feedbackmsg: "Payment successfull" };
+        }, 3000); 
+
         };
         
       },
@@ -85,29 +91,30 @@ export class CarrelloComponent {
         
       },
       complete: () => {
-        this.isLoading = true;
+        
         
       },
     });
 
     
     // Navigate to the order confirmation page
-    //this.router.navigate(['/order-product']);
+    this.router.navigate(['/order-product']);
   }
 
   pay1(orderId) {
 
     this.cart.forEach((item: any) => { // Itera sugli oggetti nel carrello
+      let params = new HttpParams;
         this.orderProduct = {
             orderId: orderId,               
-            productId: item.id,             
-            quantity: item.quantity         
+            productId: item.id           
+                    
         };
-
-        this.orderProductService.addProductToOrder(this.orderProduct).subscribe({
+        params = params.append('quantity', item.quantity.toString());
+        
+        this.orderProductService.addProductToOrder(this.orderProduct , params).subscribe({
             next: (data: any) => {
                 if (data) {
-                    console.log(data);
                 }
             },
             error: (err: any) => {

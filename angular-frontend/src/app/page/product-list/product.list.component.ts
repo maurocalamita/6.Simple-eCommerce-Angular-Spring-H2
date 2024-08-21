@@ -100,10 +100,12 @@ export class ProductListComponent {
     addCart(product: any) {
         if (product.quantity > 0) {
           const cartItem = {
+            id: product.id,
             name: product.name,
             price: product.price,
             quantity: product.quantity
           };
+          //console.log(product.id);
           this.cart.push(cartItem);
           this.total += product.price * product.quantity
           product.quantity = 0; // Reset quantity after adding to cart

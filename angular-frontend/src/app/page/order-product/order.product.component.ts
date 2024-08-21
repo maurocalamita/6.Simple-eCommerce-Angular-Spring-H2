@@ -12,24 +12,50 @@ import { HttpParams } from '@angular/common/http';
 
 })
 export class AddProductToOrderComponent implements OnInit {
-  //orderProduct: OrderProduct = { orderId: null, productId: null, quantity: 1 };
+
   orderProduct=[];
+  cart = [];
 
   constructor(private orderProductService: OrderProductService) {}
 
   ngOnInit() {
 
-    this.orderProduct= JSON.parse(localStorage.getItem('order'));
-    
-
-    /*this.orderProductService.addProductToOrder(this.orderProduct).subscribe(response => {
-        console.log('Product added to order successfully:', response);
-        // Puoi aggiungere logica aggiuntiva, come il reset del form o la visualizzazione di un messaggio di successo
-      });
-      */
-  }
-
-  addProductToOrder() {
+    //this.orderProduct= JSON.parse(localStorage.getItem('order'));
    
+    this.cronOrdini();
+
   }
+
+  cronOrdini() {
+  this.cart = [];
+  this.orderProductService.getAllOrdersProducts().subscribe({
+    next: (data: any) => { 
+      if (data.length !== 0) {
+        console.log(data);
+        this.cart = data.content.map(order => ({
+          orderId: order.id.orderId,
+          productName: order.product.name,
+          quantity: order.quantity,
+          dateCreated: order.order.dataCreated
+        }));
+      };
+      console.log(this.cart);
+      //window.location.reload();
+      
+    },
+    error: (err: any) => {
+      console.log(err);
+      /*this.feedback = {
+        feedbackType: err.feedbackType,
+        feedbackmsg: err.feedbackmsg,
+      };*/
+    },
+    complete: () => {
+      
+      
+    },
+  });
+
+}
+
 }
