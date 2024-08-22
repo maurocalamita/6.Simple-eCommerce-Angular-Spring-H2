@@ -69,10 +69,7 @@ export class CarrelloComponent {
       next: (data: any) => { 
         if (data.length !== 0) {
           this.pay1(data.id);
-          this.feedback = {
-            feedbackType: "success",
-            feedbackmsg: "Payment successfull",
-          };
+          
           setTimeout(() => {
             this.feedback = { feedbackType: "success", feedbackmsg: "Payment successfull" };
         }, 3000); 
