@@ -98,7 +98,7 @@ export class CarrelloComponent {
 
     
     // Navigate to the order confirmation page
-    this.router.navigate(['/order-product']);
+    //this.router.navigate(['/order-product']);
   }
 
   pay1(orderId) {

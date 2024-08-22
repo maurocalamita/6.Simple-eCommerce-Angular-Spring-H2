@@ -23,7 +23,7 @@ export class AddProductToOrderComponent implements OnInit {
     //this.orderProduct= JSON.parse(localStorage.getItem('order'));
    
     this.cronOrdini();
-
+    //window.location.reload();
   }
 
   cronOrdini() {

@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="row">
-                <div *ngFor="let product of products | paginate: { itemsPerPage: prodPage, currentPage: pagination + 1, totalItems: totalItems }; let i = index" class="col-md-4 mb-4">
+                <div *ngFor="let product of products | paginate: { itemsPerPage: productPage, currentPage: pagination + 1, totalItems: totalItems }; let i = index" class="col-md-4 mb-4">
                     <div class="card">
                         <img [src]="product.pictureUrl" class="card-img-top" alt="{{ product.name }}">
                         <div class="card-body">

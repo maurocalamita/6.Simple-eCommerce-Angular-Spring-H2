@@ -18,7 +18,7 @@ export class ProductListComponent {
   product: Product = { id: "",  name: "", price: "" ,pictureUrl:""};
   totalProducts: number = 0;
   pagination: number = 0;
-  productPage: number = 5;
+  productPage: number = 10;
   sortField: string = "name"
   sortOrder: string = 'desc';
   quantityForm: FormGroup;
